@@ -1,0 +1,13 @@
+<p>form-shell works!</p>
+
+<ng-content select="[header]"></ng-content>
+
+<form #myForm="ngForm" (ngSubmit)="submitForm()">
+    <ng-content select="[form]" *ngIf="step == 'form'"></ng-content>
+    <hr class="hr-margin">
+    <button type="submit">Confirm</button>
+</form>
+
+<ng-content select="[confirmation]" *ngIf="step == 'confirmation'"></ng-content>
+
+

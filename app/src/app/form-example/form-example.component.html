@@ -1,1 +1,68 @@
 <p>form-example works!</p>
+
+
+<app-form-shell [formRequest]="formRequest" (formReset)="resetForm()" (formResponse)="formResponse = $event">
+
+    <div header>
+        <p>Specific form fields</p>
+    </div>
+
+    <div form class="col-md-12">
+        <div class="form-group" class="col-md-6">
+            <label for="input1" class="text-bold">
+                <p>Name *</p>
+            </label>
+            <input type="text" class="form-control" name="input1" id="input1" maxlength="50" required
+                [(ngModel)]="formRequest.name" #input1Form="ngModel">
+        </div>
+        <div class="form-group" class="col-md-6">
+            <label for="input2" class="text-bold">
+                <p>Age *</p>
+            </label>
+            <input type="number" class="form-control" name="input2" id="input2" max="110" required
+                [(ngModel)]="formRequest.age" #input2Form="ngModel">
+        </div>
+        <div class="form-group" class="col-md-6">
+            <label for="input3" class="text-bold">
+                <p>Nationality *</p>
+            </label>
+            <input type="text" class="form-control" name="input3" id="input3" maxlength="25" required
+                [(ngModel)]="formRequest.nationality" #input3Form="ngModel">
+        </div>
+        <div class="form-group" class="col-md-6">
+            <label for="input4" class="text-bold">
+                <p>Height *</p>
+            </label>
+            <input type="number" class="form-control" name="input4" id="input4" max="2.50" required
+                [(ngModel)]="formRequest.height" #input4Form="ngModel">
+        </div>
+    </div>
+
+    <div confirmation>
+        <div class="form-group" class="col-md-6">
+            <label for="input1" class="text-bold">
+                <p>Name: </p>
+            </label>
+            <p>{{formResponse.name}}</p>
+        </div>
+        <div class="form-group" class="col-md-6">
+            <label for="input2" class="text-bold">
+                <p>Age: </p>
+            </label>
+            <p>{{formResponse.age}}</p>
+        </div>
+        <div class="form-group" class="col-md-6">
+            <label for="input3" class="text-bold">
+                <p>Nationality: </p>
+            </label>
+            <p>{{formResponse.nationality}}</p>
+        </div>
+        <div *ngIf="formResponse.height != null" class="form-group" class="col-md-6">
+            <label for="input1" class="text-bold">
+                <p>Height: </p>
+            </label>
+            <p>{{formResponse.height}}</p>
+        </div>
+    </div>
+
+</app-form-shell>
